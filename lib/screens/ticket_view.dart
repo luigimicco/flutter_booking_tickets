@@ -21,9 +21,9 @@ class TicketView extends StatelessWidget {
           children: [
             /* blue part */
             Container(
-              decoration: const BoxDecoration(
-                  color: Color(0xff526799),
-                  borderRadius: BorderRadius.only(
+              decoration: BoxDecoration(
+                  color: Styles.primaryColor,
+                  borderRadius: const BorderRadius.only(
                       topRight: Radius.circular(21),
                       topLeft: Radius.circular(21))),
               padding: const EdgeInsets.all(16),
@@ -112,58 +112,77 @@ class TicketView extends StatelessWidget {
               ),
             ),
             /* orange one */
-            Container(
-              color: Styles.orangeColor,
-              child: Row(
-                children: [
-                  SizedBox(
-                    height: 20,
-                    width: 10,
-                    child: DecoratedBox(
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.only(
-                              topRight: Radius.circular(10),
-                              bottomRight: Radius.circular(10),
-                            ))),
-                  ),
-                  Expanded(
-                      child: Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: LayoutBuilder(builder:
-                        (BuildContext context, BoxConstraints constraints) {
-                      print("The width is ${constraints.constrainWidth()}");
-                      return Flex(
-                        direction: Axis.horizontal,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        mainAxisSize: MainAxisSize.max,
-                        children: List.generate(
-                            (constraints.constrainWidth() / 15).floor(),
-                            (index) => SizedBox(
-                                  width: 5,
-                                  height: 1,
-                                  child: DecoratedBox(
-                                      decoration:
-                                          BoxDecoration(color: Colors.white)),
-                                )),
-                      );
-                    }),
-                  )),
-                  SizedBox(
-                    height: 20,
-                    width: 10,
-                    child: DecoratedBox(
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(10),
-                              bottomLeft: Radius.circular(10),
-                            ))),
-                  )
-                ],
-              ),
+            Stack(
+              children: [
+                Flex(
+                  direction: Axis.vertical,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                        color: Styles.primaryColor,
+                        child: Row(children: [
+                          Expanded(
+                              child: Padding(
+                            padding: const EdgeInsets.only(
+                                top: 9, left: 20.0, right: 20.0),
+                            child: LayoutBuilder(builder: (BuildContext context,
+                                BoxConstraints constraints) {
+                              print(
+                                  "The width is ${constraints.constrainWidth()}");
+                              return Flex(
+                                direction: Axis.horizontal,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                mainAxisSize: MainAxisSize.max,
+                                children: List.generate(
+                                    (constraints.constrainWidth() / 15).floor(),
+                                    (index) => SizedBox(
+                                          width: 5,
+                                          height: 1,
+                                          child: DecoratedBox(
+                                              decoration: BoxDecoration(
+                                                  color: Colors.white)),
+                                        )),
+                              );
+                            }),
+                          )),
+                        ])),
+                    SizedBox(
+                        height: 10,
+                        child: Container(color: Styles.orangeColor)),
+                  ],
+                ),
+                Flex(
+                  direction: Axis.horizontal,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    SizedBox(
+                      height: 20,
+                      width: 10,
+                      child: DecoratedBox(
+                          decoration: BoxDecoration(
+                              color: Styles.bgColor,
+                              borderRadius: const BorderRadius.only(
+                                topRight: Radius.circular(10),
+                                bottomRight: Radius.circular(10),
+                              ))),
+                    ),
+                    SizedBox(
+                      height: 20,
+                      width: 10,
+                      child: DecoratedBox(
+                          decoration: BoxDecoration(
+                              color: Styles.bgColor,
+                              borderRadius: const BorderRadius.only(
+                                topLeft: Radius.circular(10),
+                                bottomLeft: Radius.circular(10),
+                              ))),
+                    )
+                  ],
+                ),
+              ],
             ),
-            /* bootm part of tickek */
+            /* bottom part of ticket */
             Container(
               decoration: BoxDecoration(
                   color: Styles.orangeColor,
