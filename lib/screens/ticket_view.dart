@@ -111,7 +111,7 @@ class TicketView extends StatelessWidget {
                 ],
               ),
             ),
-            /* orange one */
+            /* middle line */
             Stack(
               children: [
                 Flex(
@@ -182,7 +182,7 @@ class TicketView extends StatelessWidget {
                 ),
               ],
             ),
-            /* bottom part of ticket */
+            /* orange part */
             Container(
               decoration: BoxDecoration(
                   color: Styles.orangeColor,
